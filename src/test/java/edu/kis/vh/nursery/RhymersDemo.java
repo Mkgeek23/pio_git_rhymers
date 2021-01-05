@@ -9,6 +9,7 @@ class RhymersDemo {
     public static final int DEFAULT = 0;
     public static final int BOUND = 20;
     public static final int MAX_SIZE = 15;
+    public static final int SIZE = 3;
 
     public static void main(String[] args) {
         Rhymersfactory factory = new DefaultRhymersFactory();
@@ -17,12 +18,12 @@ class RhymersDemo {
                 factory.GetFIFORhymer(), factory.GetHanoiRhymer()};
 
         for (int i = START; i < MAX_SIZE; i++)
-            for (int j = DEFAULT; j < 3; j++)
+            for (int j = DEFAULT; j < SIZE; j++)
                 rhymers[j].countIn(i);
 
         java.util.Random rn = new java.util.Random();
         for (int i = START; i < MAX_SIZE; i++)
-            rhymers[3].countIn(rn.nextInt(BOUND));
+            rhymers[SIZE].countIn(rn.nextInt(BOUND));
 
         for (int i = DEFAULT; i < rhymers.length; i++) {
             while (!rhymers[i].callCheck())
@@ -31,7 +32,7 @@ class RhymersDemo {
         }
 
         System.out.println("total rejected is "
-                + ((HanoiRhymer) rhymers[3]).reportRejected());
+                + ((HanoiRhymer) rhymers[SIZE]).reportRejected());
 
     }
 
